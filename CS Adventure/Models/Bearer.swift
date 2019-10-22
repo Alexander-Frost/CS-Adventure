@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Bearer.swift
 //  CS Adventure
 //
 //  Created by Alex on 10/22/19.
@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+struct Bearer: Codable {
+    let key: String
+}
