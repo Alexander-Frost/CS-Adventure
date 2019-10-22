@@ -15,6 +15,9 @@
 		FA63A01E235F9FAA00185711 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA63A01D235F9FAA00185711 /* Registration.storyboard */; };
 		FA63A022235F9FF000185711 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A021235F9FF000185711 /* LoginViewController.swift */; };
 		FA63A026235FA02000185711 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A025235FA02000185711 /* SignupViewController.swift */; };
+		FA63A02A235FB39200185711 /* TestServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A029235FB39200185711 /* TestServerController.swift */; };
+		FA63A02C235FB3A700185711 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A02B235FB3A700185711 /* User.swift */; };
+		FA63A02E235FB3B300185711 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A02D235FB3B300185711 /* Bearer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FA63A01D235F9FAA00185711 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		FA63A021235F9FF000185711 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA63A025235FA02000185711 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		FA63A029235FB39200185711 /* TestServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServerController.swift; sourceTree = "<group>"; };
+		FA63A02B235FB3A700185711 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA63A02D235FB3B300185711 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 			children = (
 				FA63A007235F9BFE00185711 /* AppDelegate.swift */,
 				FA63A009235F9BFE00185711 /* SceneDelegate.swift */,
+				FA63A029235FB39200185711 /* TestServerController.swift */,
+				FA63A02B235FB3A700185711 /* User.swift */,
+				FA63A02D235FB3B300185711 /* Bearer.swift */,
 				FA63A020235F9FDB00185711 /* View Controllers */,
 				FA63A01F235F9FC600185711 /* Storyboard */,
 				FA63A00D235F9BFE00185711 /* Main.storyboard */,
@@ -161,7 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA63A02A235FB39200185711 /* TestServerController.swift in Sources */,
 				FA63A022235F9FF000185711 /* LoginViewController.swift in Sources */,
+				FA63A02C235FB3A700185711 /* User.swift in Sources */,
+				FA63A02E235FB3B300185711 /* Bearer.swift in Sources */,
 				FA63A008235F9BFE00185711 /* AppDelegate.swift in Sources */,
 				FA63A026235FA02000185711 /* SignupViewController.swift in Sources */,
 				FA63A00A235F9BFE00185711 /* SceneDelegate.swift in Sources */,
