@@ -10,6 +10,19 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: - Outlets
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
+    
+    // MARK: - Actions
+    
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
+    }
+    
+    // MARK: - VC Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

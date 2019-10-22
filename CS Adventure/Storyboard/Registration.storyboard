@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gEQ-4C-YNv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -84,7 +84,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-RP-eal">
                                 <rect key="frame" x="17" y="277" width="380" height="109"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0Q-an-nQv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0Q-an-nQv">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="19"/>
                                         <fontDescription key="fontDescription" name="BarlowCondensed-Bold" family="Barlow Condensed" pointSize="16"/>
                                         <color key="textColor" red="0.34901960780000002" green="0.68230134249999996" blue="0.27290457489999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,6 +124,9 @@
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="0.90196078430000004" green="0.91764705879999997" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="SMU-Ma-c9V" eventType="touchUpInside" id="quJ-cn-cg1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -136,10 +139,15 @@
                         <viewLayoutGuide key="safeArea" id="WUp-xl-FGq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="FcJ-bg-T1J"/>
+                    <connections>
+                        <outlet property="loginBtn" destination="4G3-UA-Rnt" id="2jc-wN-Nsg"/>
+                        <outlet property="passwordTextField" destination="qnF-uO-4S8" id="PzB-Ey-6UE"/>
+                        <outlet property="userNameTextField" destination="S7l-9r-pQV" id="Gfg-Vh-hWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIg-G1-8tz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="-380"/>
+            <point key="canvasLocation" x="1029" y="-355"/>
         </scene>
         <!--Signup-->
         <scene sceneID="k2R-Uq-lMa">
@@ -160,11 +168,14 @@
                                 <state key="normal" title="SIGNUP">
                                     <color key="titleColor" red="0.90196078430000004" green="0.91764705879999997" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupBtnPressed:" destination="oem-Tq-3A2" eventType="touchUpInside" id="DrO-Cs-Ab2"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="THX-D7-uoz">
                                 <rect key="frame" x="17" y="264" width="380" height="122"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDj-tA-zVT">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDj-tA-zVT">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="380" id="wfs-Oq-PAj"/>
@@ -195,10 +206,16 @@
                         <viewLayoutGuide key="safeArea" id="OdT-k3-knL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Signup" id="HA9-r4-rVp"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="7H7-CA-QMS" id="afP-Bx-2jJ"/>
+                        <outlet property="passwordTextField" destination="uBd-mC-L3a" id="sZG-Xp-Ts6"/>
+                        <outlet property="signupBtn" destination="37Y-1e-ZiZ" id="8rH-u0-be1"/>
+                        <outlet property="usernameTextField" destination="CDj-tA-zVT" id="HfQ-lY-fdX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nY-m7-Bcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="327"/>
+            <point key="canvasLocation" x="1029" y="307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iuX-cQ-taZ">

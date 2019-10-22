@@ -10,6 +10,21 @@ import UIKit
 
 class SignupViewController: UIViewController {
 
+    // MARK: - Outlets
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var signupBtn: UIButton!
+    
+    // MARK: - Actions
+    
+    @IBAction func signupBtnPressed(_ sender: UIButton) {
+    
+    }
+    
+    // MARK: - VC Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
