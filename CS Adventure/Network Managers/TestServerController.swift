@@ -10,9 +10,14 @@ import Foundation
 
 class TestServerController {
     
+    // MARK: - Properties
+    
     var key: String?
+    var ourPlayer: Player?
     let testServerURL = URL(string: "https://lambda-mud-test.herokuapp.com/")!
 
+    // MARK: - Enum
+    
     enum HTTPMethod: String {
         case get = "GET"
         case put = "PUT"
@@ -20,6 +25,8 @@ class TestServerController {
         case delete = "DELETE"
     }
 
+    // MARK: - Public
+    
     func registerUser(username: String, password1: String, password2: String, completion: @escaping (Error?) -> Void) {
         
         let requestURL = testServerURL
@@ -68,7 +75,38 @@ class TestServerController {
         }.resume()
     }
     
-    
+    // We initialize the player after the token is received
+    func initializePlayer(token: String, completion: @escaping (Error?, Player?) -> Void) {
+        
+        let requestURL = testServerURL.appendingPathComponent("api").appendingPathComponent("adv").appendingPathComponent("init")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+                
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                NSLog("Error logging in: \(error)")
+                return completion(error, nil)
+            }
+            guard let data = data else {
+                NSLog("No data returned")
+                return completion(nil, nil)
+            }
+            
+            do {
+                let player = try JSONDecoder().decode(Player.self, from: data)
+                self.ourPlayer = player
+                print("HERE player pulled: ", player, player.name, player.title, player.uuid)
+                completion(nil, player)
+            } catch {
+                NSLog("Error decoding key: \(error)")
+                return completion(error, nil)
+            }
+        }.resume()
+    }
     
     func loginUser(username: String, password: String, completion: @escaping (Error?) -> Void) {
         

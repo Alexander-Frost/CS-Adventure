@@ -17,6 +17,7 @@
 		FA63A02A235FB39200185711 /* TestServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A029235FB39200185711 /* TestServerController.swift */; };
 		FA63A02C235FB3A700185711 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A02B235FB3A700185711 /* User.swift */; };
 		FA63A02E235FB3B300185711 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A02D235FB3B300185711 /* Bearer.swift */; };
+		FA63A0322360CD0600185711 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A0312360CD0600185711 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FA63A029235FB39200185711 /* TestServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestServerController.swift; sourceTree = "<group>"; };
 		FA63A02B235FB3A700185711 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA63A02D235FB3B300185711 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		FA63A0312360CD0600185711 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				FA63A02B235FB3A700185711 /* User.swift */,
+				FA63A0312360CD0600185711 /* Player.swift */,
 				FA63A02D235FB3B300185711 /* Bearer.swift */,
 			);
 			path = Models;
@@ -186,6 +189,7 @@
 				FA63A022235F9FF000185711 /* LoginViewController.swift in Sources */,
 				FA63A02C235FB3A700185711 /* User.swift in Sources */,
 				FA63A02E235FB3B300185711 /* Bearer.swift in Sources */,
+				FA63A0322360CD0600185711 /* Player.swift in Sources */,
 				FA63A008235F9BFE00185711 /* AppDelegate.swift in Sources */,
 				FA63A026235FA02000185711 /* SignupViewController.swift in Sources */,
 				FA63A00A235F9BFE00185711 /* SceneDelegate.swift in Sources */,
