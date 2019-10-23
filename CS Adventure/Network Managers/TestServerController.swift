@@ -25,7 +25,7 @@ class TestServerController {
         case delete = "DELETE"
     }
 
-    // MARK: - Public
+    // MARK: - Registration
     
     func registerUser(username: String, password1: String, password2: String, completion: @escaping (Error?) -> Void) {
         
@@ -75,6 +75,52 @@ class TestServerController {
         }.resume()
     }
     
+    func loginUser(username: String, password: String, completion: @escaping (Error?) -> Void) {
+        
+        let requestURL = testServerURL
+            .appendingPathComponent("api")
+            .appendingPathComponent("login")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let user = User(username: username, password1: password)
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(user)
+        } catch {
+            NSLog("Error encoding user: \(error)")
+            return completion(error)
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                NSLog("Error logging in: \(error)")
+                return completion(error)
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned")
+                return completion(nil)
+            }
+            
+            do {
+                let bearer = try JSONDecoder().decode(Bearer.self, from: data)
+                self.key = bearer.key
+                completion(nil)
+            } catch {
+                NSLog("Error decoding key: \(error)")
+                return completion(error)
+            }
+            
+        }.resume()
+    }
+    
+    
+    // MARK:- Player / Room
+    
     // We initialize the player after the token is received
     func initializePlayer(token: String, completion: @escaping (Error?, Player?) -> Void) {
         
@@ -108,56 +154,46 @@ class TestServerController {
         }.resume()
     }
     
-    func loginUser(username: String, password: String, completion: @escaping (Error?) -> Void) {
+    // We pass the direction we are headed and receive back the next room we are going to
+    func moveOneStep(direction: Direction, completion: @escaping (Error?, Room?) -> Void){
         
-        let requestURL = testServerURL
-            .appendingPathComponent("api")
-            .appendingPathComponent("login")
+        guard let token = key else { return NSLog("Error retrieving token from class.")}
+        let requestURL = testServerURL.appendingPathComponent("api").appendingPathComponent("adv").appendingPathComponent("move")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let user = User(username: username, password1: password)
+        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+                
+        let passedDirectionDict = ["direction": direction]
         
         do {
-            request.httpBody = try JSONEncoder().encode(user)
+            request.httpBody = try JSONEncoder().encode(passedDirectionDict)
         } catch {
             NSLog("Error encoding user: \(error)")
-            completion(error)
-            return
+            return completion(error, nil)
         }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
             if let error = error {
                 NSLog("Error logging in: \(error)")
-                completion(error)
-                return
+                return completion(error, nil)
             }
-            
             guard let data = data else {
                 NSLog("No data returned")
-                completion(nil)
-                return
+                return completion(nil, nil)
             }
             
             do {
-                let bearer = try JSONDecoder().decode(Bearer.self, from: data)
-                self.key = bearer.key
-                completion(nil)
+                let room = try JSONDecoder().decode(Room.self, from: data)
+                print("HERE room pulled: ", room.name, room.title, room)
+                completion(nil, room)
             } catch {
                 NSLog("Error decoding key: \(error)")
-                completion(error)
-                return
+                return completion(error, nil)
             }
-            
         }.resume()
-        
-        
     }
-    
-    
-    
     
 }

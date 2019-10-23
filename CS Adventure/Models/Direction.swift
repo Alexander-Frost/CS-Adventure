@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Direction: String {
+enum Direction: String, Encodable {
     case north = "n"
     case south = "s"
     case east = "e"
