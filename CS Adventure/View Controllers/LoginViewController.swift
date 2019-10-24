@@ -28,7 +28,9 @@ class LoginViewController: UIViewController {
         
         registrationController.loginUser(username: userName, password: pass) { (err) in
             if let err = err {return NSLog("Error logging in: ", err.localizedDescription)}
-            self.performSegue(withIdentifier: "mapSegue", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "mapSegue", sender: self)
+            }
         }
     }
     

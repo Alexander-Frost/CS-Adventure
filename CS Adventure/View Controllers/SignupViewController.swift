@@ -31,7 +31,9 @@ class SignupViewController: UIViewController {
         
         registrationController.registerUser(username: userName, password1: pass1, password2: pass2) { (err) in
             if let err = err {return NSLog("Error registering user: ", err.localizedDescription)}
-            self.performSegue(withIdentifier: "mapSegue", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "mapSegue", sender: self)
+            }
         }
     }
     
