@@ -58,12 +58,6 @@ class MapViewController: UIViewController {
         
         let seperator = mapView.frame.maxX / 22
         
-        var playerDot = UIView(frame: CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)) {
-            didSet {
-                playerDot.makeCircle()
-            }
-        }
-        
         setupUI()
     }
     
@@ -73,7 +67,6 @@ class MapViewController: UIViewController {
     }
     
     private func updateViews(){
-        setupUI()
         controller?.initializePlayer(completion: { (error, player) in
             if let error = error {return NSLog("Error initializing Player: ", error.localizedDescription)}
             
