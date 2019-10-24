@@ -12,7 +12,11 @@ class TestServerController {
     
     // MARK: - Properties
     
-    var key: String?
+    var key: String? {
+        didSet {
+            print(key)
+        }
+    }
     var ourPlayer: Player?
     var rooms: [MappedRoom]?
     let testServerURL = URL(string: "https://lambda-mud-test.herokuapp.com/")!
