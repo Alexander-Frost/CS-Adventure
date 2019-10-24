@@ -24,7 +24,7 @@ class LandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
     // MARK: - Navigation
@@ -39,8 +39,8 @@ class LandingViewController: UIViewController {
     // MARK: - UI
     
     private func updateViews(){
-        loginBtn.makeCorner(withRadius: 6.0)
-        signupBtn.makeCorner(withRadius: 6.0)
+        loginBtn.makeCorner(withRadius: 12.0)
+        signupBtn.makeCorner(withRadius: 12.0)
     }
     
 

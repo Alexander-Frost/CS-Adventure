@@ -76,6 +76,10 @@
                         <viewLayoutGuide key="safeArea" id="AJS-Dt-H05"/>
                     </view>
                     <navigationItem key="navigationItem" title="Begin" id="6iG-YI-f43"/>
+                    <connections>
+                        <outlet property="loginBtn" destination="dwC-y7-zgK" id="nA2-FW-taM"/>
+                        <outlet property="signupBtn" destination="Ye3-ot-k5c" id="fpv-Vw-H8S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGk-0Z-pms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
