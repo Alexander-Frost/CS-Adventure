@@ -19,7 +19,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     
-    var playerDot: UIView?
+    var playerDot: UIView? {
+        didSet{
+            print("Coor: ", playerDot!.center.x, playerDot!.center.y)
+        }
+    }
     var playerX = 8
     var playerY = 0
     
@@ -111,12 +115,14 @@ class MapViewController: UIViewController {
         let seperator = mapView.frame.maxX / 22
         
         // Player Dot
-        let playerDot = UIView(frame: CGRect(x: xfactor * 8, y: yfactor * 0, width: seperator, height: seperator))
-        playerDot.makeDot()
-        self.playerDot = playerDot
+        let playerDot1 = UIView(frame: CGRect(x: xfactor * 8, y: yfactor * 0, width: seperator, height: seperator))
+        playerDot1.makeDot()
+        self.playerDot = playerDot1
+        
+        print("Dot Coord: ", playerDot1.center.x, playerDot1.center.y)
         
         // Add Subviews
-        mapView.addSubview(playerDot)
+        mapView.addSubview(playerDot!)
         mapView.addSubview(upBtn)
         mapView.addSubview(downBtn)
         mapView.addSubview(leftBtn)
@@ -137,7 +143,7 @@ class MapViewController: UIViewController {
         let seperator = mapView.frame.maxX / 22
         
         switch direction {
-        case "n":
+        case "s":
             for room in rooms {
                 if room.x == playerX && room.y == playerY+1 {
                     print("Moving north")
@@ -145,6 +151,7 @@ class MapViewController: UIViewController {
                     playerY = room.y
                     print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    mapView.addSubview(playerDot)
                     return
                 }
             }
@@ -157,11 +164,12 @@ class MapViewController: UIViewController {
                     playerY = room.y
                     print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    mapView.addSubview(playerDot)
                     return
                 }
             }
             print("There is not a room to the East")
-        case "s":
+        case "n":
             for room in rooms {
                 if room.x == playerX && room.y == playerY-1 {
                     print("Moving south")
@@ -169,6 +177,7 @@ class MapViewController: UIViewController {
                     playerY = room.y
                     print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    mapView.addSubview(playerDot)
                     return
                 }
             }
@@ -181,6 +190,7 @@ class MapViewController: UIViewController {
                     playerY = room.y
                     print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    mapView.addSubview(playerDot)
                     return
                 }
             }
