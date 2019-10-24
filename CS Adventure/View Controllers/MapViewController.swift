@@ -19,7 +19,6 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     
-    var playerDot = UIView(frame: CGRect(x: 8, y: 0, width: 10, height: 10))
     var playerX = 8
     var playerY = 0
     
@@ -52,11 +51,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.controller = controller
-        
-        let xfactor = mapView.frame.maxX / 16
-        let yfactor = mapView.frame.maxY / 17
-        
-        let seperator = mapView.frame.maxX / 22
         
         setupUI()
     }
@@ -110,8 +104,13 @@ class MapViewController: UIViewController {
         rightBtn.makeCircle()
         rightBtn.addTarget(self, action: #selector(rightBtnPressed(sender:)), for: .touchUpInside)
         
-        // Player Dot
+        // Coordinates
+        let xfactor = mapView.frame.maxX / 16
+        let yfactor = mapView.frame.maxY / 17
+        let seperator = mapView.frame.maxX / 22
         
+        // Player Dot
+        var playerDot = UIView(frame: CGRect(x: xfactor * 8, y: yfactor * 0, width: seperator, height: seperator))
         playerDot.makeDot()
         
         // Add Subviews
