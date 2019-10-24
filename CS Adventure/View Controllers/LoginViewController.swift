@@ -36,10 +36,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
+    // MARK: - UI
+    
+    private func updateViews(){
+        loginBtn.shadowButton()
+    }
+    
     /*
     // MARK: - Navigation
 

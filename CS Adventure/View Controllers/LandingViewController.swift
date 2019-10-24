@@ -10,8 +10,16 @@ import UIKit
 
 class LandingViewController: UIViewController {
 
+    // MARK: - Instances
     
     let controller = TestServerController()
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var signupBtn: UIButton!
+    
+    // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +27,20 @@ class LandingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "testSegue" {
             guard let destinationVC = segue.destination as? MapViewController else { return }
             destinationVC.controller = controller
         }
+    }
+    
+    // MARK: - UI
+    
+    private func updateViews(){
+        loginBtn.makeCorner(withRadius: 6.0)
+        signupBtn.makeCorner(withRadius: 6.0)
     }
     
 

@@ -36,11 +36,16 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        updateViews()
     }
     
-
+    // MARK: - UI
+    
+    private func updateViews(){
+        signupBtn.shadowButton()
+    }
+    
     /*
     // MARK: - Navigation
 
