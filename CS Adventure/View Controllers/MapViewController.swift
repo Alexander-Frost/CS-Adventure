@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController {
 
-    // MARK: - Instnces
+    // MARK: - Received
     
     var controller: TestServerController?
 
@@ -27,13 +27,18 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         mapView.controller = controller
-//        if let controller = controller {
-//            mapView.controller = controller
-//        }
-
+        
+    }
+    
+    private func updateViews(){
+        controller?.initializePlayer(completion: { (error, player) in
+            if let error = error {return NSLog("Error initializing Player: ", error.localizedDescription)}
+            
+            guard let player = player else {return NSLog("Error Player does not exist")}
+            
+            
+        })
     }
     
 
