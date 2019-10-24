@@ -57,14 +57,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLK-m3-eKw">
-                                <rect key="frame" x="182" y="770" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Testing"/>
-                                <connections>
-                                    <segue destination="aoE-RA-sQ1" kind="show" identifier="testSegue" id="9oD-Sk-8hv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -155,6 +147,7 @@
                         <outlet property="loginBtn" destination="4G3-UA-Rnt" id="2jc-wN-Nsg"/>
                         <outlet property="passwordTextField" destination="qnF-uO-4S8" id="PzB-Ey-6UE"/>
                         <outlet property="userNameTextField" destination="S7l-9r-pQV" id="Gfg-Vh-hWh"/>
+                        <segue destination="aoE-RA-sQ1" kind="show" identifier="mapSegue" id="2xk-bG-qUW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIg-G1-8tz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0K7-cy-uQ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2313" y="-47"/>
+            <point key="canvasLocation" x="2222" y="-64"/>
         </scene>
         <!--Signup-->
         <scene sceneID="k2R-Uq-lMa">
@@ -254,11 +247,12 @@
                         <outlet property="passwordTextField" destination="uBd-mC-L3a" id="sZG-Xp-Ts6"/>
                         <outlet property="signupBtn" destination="37Y-1e-ZiZ" id="8rH-u0-be1"/>
                         <outlet property="usernameTextField" destination="CDj-tA-zVT" id="HfQ-lY-fdX"/>
+                        <segue destination="aoE-RA-sQ1" kind="show" identifier="mapSegue" id="LqL-sM-prU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nY-m7-Bcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="307"/>
+            <point key="canvasLocation" x="1029" y="302"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iuX-cQ-taZ">
@@ -279,4 +273,7 @@
             <point key="canvasLocation" x="-637.68115942028987" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2xk-bG-qUW"/>
+    </inferredMetricsTieBreakers>
 </document>

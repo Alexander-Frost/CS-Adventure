@@ -27,8 +27,11 @@ class SignupViewController: UIViewController {
         guard let userName = usernameTextField.text, !userName.isEmpty else {return Popup.showAlert(on: self, style: .alert, title: "Signup Error", message: "Please make sure all fields are completed.")}
         guard let pass1 = passwordTextField.text, !pass1.isEmpty else {return Popup.showAlert(on: self, style: .alert, title: "Signup Error", message: "Please make sure all fields are completed.")}
         guard let pass2 = confirmPasswordTextField.text, !pass2.isEmpty else {return Popup.showAlert(on: self, style: .alert, title: "Signup Error", message: "Please make sure all fields are completed.")}
+        
+        
         registrationController.registerUser(username: userName, password1: pass1, password2: pass2) { (err) in
             if let err = err {return NSLog("Error registering user: ", err.localizedDescription)}
+            self.performSegue(withIdentifier: "mapSegue", sender: self)
         }
     }
     
@@ -46,14 +49,11 @@ class SignupViewController: UIViewController {
         signupBtn.shadowButton()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "mapSegue" {
+            let destVC = segue.destination as! MapViewController
+            destVC.controller = registrationController
+        }
     }
-    */
 
 }

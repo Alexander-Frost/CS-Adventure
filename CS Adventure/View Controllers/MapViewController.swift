@@ -11,11 +11,15 @@ import MapKit
 
 class MapViewController: UIViewController {
 
+    // MARK: - Instnces
+    
     var controller: TestServerController?
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var mapView: MapView!
     
-    
+    // MARK: - VC Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
