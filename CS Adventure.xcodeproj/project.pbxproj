@@ -12,6 +12,7 @@
 		C486170C2361101300E183FB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486170B2361101300E183FB /* MapView.swift */; };
 		C486170E2361193300E183FB /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C486170D2361193300E183FB /* LandingViewController.swift */; };
 		C486171023611E1700E183FB /* GeneratedRooms.json in Resources */ = {isa = PBXBuildFile; fileRef = C486170F23611E1700E183FB /* GeneratedRooms.json */; };
+		FA135E9E236212C70023FAA8 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA135E9D236212C70023FAA8 /* Popup.swift */; };
 		FA63A008235F9BFE00185711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A007235F9BFE00185711 /* AppDelegate.swift */; };
 		FA63A00A235F9BFE00185711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA63A009235F9BFE00185711 /* SceneDelegate.swift */; };
 		FA63A011235F9C1100185711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA63A010235F9C1100185711 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		C486170B2361101300E183FB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		C486170D2361193300E183FB /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		C486170F23611E1700E183FB /* GeneratedRooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GeneratedRooms.json; sourceTree = "<group>"; };
+		FA135E9D236212C70023FAA8 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		FA63A004235F9BFE00185711 /* CS Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS Adventure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA63A007235F9BFE00185711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA63A009235F9BFE00185711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA135E9C236212BA0023FAA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA135E9D236212C70023FAA8 /* Popup.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FA639FFB235F9BFE00185711 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +95,7 @@
 				FA63A007235F9BFE00185711 /* AppDelegate.swift */,
 				FA63A009235F9BFE00185711 /* SceneDelegate.swift */,
 				C486170F23611E1700E183FB /* GeneratedRooms.json */,
+				FA135E9C236212BA0023FAA8 /* Views */,
 				FA63A030235FB40000185711 /* Network Managers */,
 				FA63A02F235FB3E700185711 /* Models */,
 				FA63A020235F9FDB00185711 /* View Controllers */,
@@ -223,6 +234,7 @@
 				C48617022360E4BC00E183FB /* MapViewController.swift in Sources */,
 				FA63A008235F9BFE00185711 /* AppDelegate.swift in Sources */,
 				FA63A026235FA02000185711 /* SignupViewController.swift in Sources */,
+				FA135E9E236212C70023FAA8 /* Popup.swift in Sources */,
 				FA63A00A235F9BFE00185711 /* SceneDelegate.swift in Sources */,
 				FA63A0342360D28600185711 /* Direction.swift in Sources */,
 			);

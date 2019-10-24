@@ -23,8 +23,8 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
-        guard let userName = userNameTextField.text else {return}
-        guard let pass = passwordTextField.text else {return}
+        guard let userName = userNameTextField.text else {return Popup.showAlert(on: self, style: .alert, title: "Login Error", message: "Please make sure all fields are completed.")}
+        guard let pass = passwordTextField.text else {return Popup.showAlert(on: self, style: .alert, title: "Login Error", message: "Please make sure all fields are completed.")}
         
         registrationController.loginUser(username: userName, password: pass) { (err) in
             if let err = err {return NSLog("Error logging in: ", err.localizedDescription)}
