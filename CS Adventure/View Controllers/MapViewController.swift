@@ -42,16 +42,28 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - VC Lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.controller = controller
-        setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateViews()
+        
+        let xfactor = mapView.frame.maxX / 16
+        let yfactor = mapView.frame.maxY / 17
+        
+        let seperator = mapView.frame.maxX / 22
+        
+        var playerDot = UIView(frame: CGRect(x: 8*(xfactor), y: 0*(yfactor), width: seperator, height: seperator)) {
+            didSet {
+                playerDot.makeCircle()
+            }
+        }
+        
+        playerDot.makeCircle()
+        mapView.addSubview(playerDot)
     }
     
     private func updateViews(){

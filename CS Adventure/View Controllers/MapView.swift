@@ -40,6 +40,7 @@ class MapView: UIView {
             idLabel.text = String(room.id)
             idLabel.textAlignment = .center
             idLabel.adjustsFontSizeToFitWidth = true
+            idLabel.backgroundColor = .white
             self.addSubview(idLabel)
             
             context.stroke(rect)
