@@ -146,7 +146,7 @@ class TestServerController {
                 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
-                NSLog("Error logging in: \(error)")
+                NSLog("Error logging in: \(error.localizedDescription)")
                 return completion(error, nil)
             }
             guard let data = data else {
@@ -160,7 +160,7 @@ class TestServerController {
                 print("HERE player pulled: ", player, player.name, player.title, player.uuid)
                 completion(nil, player)
             } catch {
-                NSLog("Error decoding key: \(error)")
+                NSLog("Error decoding key: \(error.localizedDescription)")
                 return completion(error, nil)
             }
         }.resume()

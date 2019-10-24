@@ -30,6 +30,11 @@ extension UIView {
     func makeCircle() {
         self.layer.cornerRadius = self.frame.size.height / 2;
         self.layer.masksToBounds = true;
+    }
+    
+    func makeDot() {
+        self.layer.cornerRadius = self.frame.size.height / 2;
+        self.layer.masksToBounds = true;
         self.backgroundColor = .blue
         self.tintColor = .blue
     }
