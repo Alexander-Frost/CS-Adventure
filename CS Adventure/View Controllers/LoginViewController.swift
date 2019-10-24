@@ -28,6 +28,9 @@ class LoginViewController: UIViewController {
         
         registrationController.loginUser(username: userName, password: pass) { (err) in
             if let err = err {return NSLog("Error logging in: ", err.localizedDescription)}
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "mapSegue", sender: self)
+            }
         }
     }
     
@@ -44,15 +47,14 @@ class LoginViewController: UIViewController {
     private func updateViews(){
         loginBtn.shadowButton()
     }
-    
-    /*
+        
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "mapSegue" {
+            let destVC = segue.destination as! MapViewController
+            destVC.controller = registrationController
+        }
     }
-    */
 
 }

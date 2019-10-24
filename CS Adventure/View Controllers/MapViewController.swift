@@ -11,11 +11,32 @@ import MapKit
 
 class MapViewController: UIViewController {
 
+    // MARK: - Received
+    
     var controller: TestServerController?
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var mapView: MapView!
     
+    var playerDot = UIView(frame: CGRect(x: 8, y: 0, width: 10, height: 10)) {
+        didSet {
+            playerDot.makeCircle()
+        }
+    }
     
+    let upBtn = UIButton(type: .custom)
+    let downBtn = UIButton(type: .custom)
+    let leftBtn = UIButton(type: .custom)
+    let rightBtn = UIButton(type: .custom)
+
+    // MARK: - Actions
+    
+    @objc func upBtnPressed(sender: UIButton){
+        
+    }
+    
+    // MARK: - VC Lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -23,16 +44,34 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         mapView.controller = controller
-//        if let controller = controller {
-//            mapView.controller = controller
-//        }
-
+        
+        playerDot.makeCircle()
+        mapView.addSubview(playerDot)
     }
     
+    private func updateViews(){
+        setupUI()
+        controller?.initializePlayer(completion: { (error, player) in
+            if let error = error {return NSLog("Error initializing Player: ", error.localizedDescription)}
+            
+            guard let player = player else {return NSLog("Error Player does not exist")}
+            
+            
+        })
+    }
 
+
+    private func setupUI(){
+        // Up button
+        upBtn.frame = CGRect(x: 100, y: 12, width: 29, height: 29)
+        upBtn.backgroundColor = .gray
+        upBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        upBtn.imageView?.contentMode = .scaleAspectFit
+        upBtn.makeCircle()
+        upBtn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        upBtn.addTarget(self, action: #selector(upBtnPressed(sender:)), for: .touchUpInside)
+    }
     
     
 

@@ -26,5 +26,12 @@ extension UIView {
         self.layer.masksToBounds = true
         self.layer.isOpaque = false
     }
+    
+    func makeCircle() {
+        self.layer.cornerRadius = self.frame.size.height / 2;
+        self.layer.masksToBounds = true;
+        self.backgroundColor = .blue
+        self.tintColor = .blue
+    }
 }
 

@@ -12,6 +12,8 @@ import UIKit
 
 class MapView: UIView {
     
+    // MARK: - Received
+    
     var controller: TestServerController? {
         didSet {
             self.rooms = controller?.rooms
@@ -19,9 +21,7 @@ class MapView: UIView {
     }
     var rooms: [MappedRoom]?
     
-    
-
-    
+    // MARK: - Draw
     
     override func draw(_ rect: CGRect) {
         
@@ -34,7 +34,6 @@ class MapView: UIView {
         let seperator = frame.maxX / 20
         
         for room in rooms {
-            
             let rect = CGRect(x: CGFloat(room.x)*xfactor, y: CGFloat(room.y)*yfactor, width: seperator, height: seperator)
             
             let idLabel = UILabel(frame: rect)
@@ -45,14 +44,10 @@ class MapView: UIView {
             self.addSubview(idLabel)
             
             context.stroke(rect)
-            
         }
         
-        
         for room1 in rooms {
-            
             for room2 in rooms {
-                
                 if abs(room1.x - room2.x) == 1 && abs(room1.y - room2.y) == 1 {
                     continue
                 }
@@ -64,9 +59,7 @@ class MapView: UIView {
             }
         }
     }
-    
-    
-    
+
     func tunnel(room1: MappedRoom, room2: MappedRoom) {
         let context = UIGraphicsGetCurrentContext()!
         let xfactor = frame.maxX / 16
@@ -85,10 +78,5 @@ class MapView: UIView {
         context.move(to: room1Point)
         context.addLine(to: room2Point)
         context.strokePath()
-
     }
-    
-    
-    
-    
 }

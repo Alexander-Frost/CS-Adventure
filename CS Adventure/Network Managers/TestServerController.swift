@@ -132,15 +132,17 @@ class TestServerController {
     // MARK:- Player / Room
     
     // We initialize the player after the token is received
-    func initializePlayer(token: String, completion: @escaping (Error?, Player?) -> Void) {
+    func initializePlayer(completion: @escaping (Error?, Player?) -> Void) {
         
         let requestURL = testServerURL.appendingPathComponent("api").appendingPathComponent("adv").appendingPathComponent("init")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.get.rawValue
         
+        guard let key = key else {return NSLog("Error: Key does not exist.")}
+        
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Token \(key)", forHTTPHeaderField: "Authorization")
                 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
