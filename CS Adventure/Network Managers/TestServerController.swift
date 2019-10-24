@@ -51,6 +51,13 @@ class TestServerController {
             return completion(error)
         }
         
+        //Clearing cookies, otherwise will recieve CSRF error
+        let cookieStore = HTTPCookieStorage.shared
+        for cookie in cookieStore.cookies ?? [] {
+            cookieStore.deleteCookie(cookie)
+        }
+        
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 NSLog("Error registering user: \(error)")
