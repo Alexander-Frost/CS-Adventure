@@ -73,6 +73,8 @@ class TestServerController {
                 return completion(nil)
             }
             
+            //Printing data returned for testing
+            print(String(decoding: data, as: UTF8.self))
             do {
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.key = bearer.key
