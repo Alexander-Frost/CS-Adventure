@@ -7,67 +7,37 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
 
-    var rooms: [MappedRoom]? {
-        didSet {
-            mapRooms()
-        }
+    var controller: TestServerController?
+
+    @IBOutlet weak var mapView: MapView!
+    
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
-    var prevRoom: MappedRoom?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testRoom()
-        //loadRooms()
+        
+        
+        mapView.controller = controller
+//        if let controller = controller {
+//            mapView.controller = controller
+//        }
+
     }
     
-    func testRoom() {
-        
-    }
-    
-    
-    func loadRooms() {
-        guard let path = Bundle.main.path(forResource: "39RoomTest", ofType: "json"),
-            let url = URL(string: path) else { return }
-        do {
-            let data = try Data(contentsOf: url)
-            let rooms = try JSONDecoder().decode([MappedRoom].self, from: data)
-            self.rooms = rooms
-            
-        } catch {
-            NSLog("Error decoding rooms: \(error)")
-            return
-        }
-    }
-    
-    
-    
-    func mapRooms() {
-        
-        guard let rooms = self.rooms else { return }
-        
-        
-        
-        
-    }
 
     
     
-    func drawRoom() {
-        
-        
-        
-    }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+
 
 }

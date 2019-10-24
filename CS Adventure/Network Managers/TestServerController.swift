@@ -14,6 +14,7 @@ class TestServerController {
     
     var key: String?
     var ourPlayer: Player?
+    var rooms: [MappedRoom]?
     let testServerURL = URL(string: "https://lambda-mud-test.herokuapp.com/")!
 
     // MARK: - Enum
@@ -23,6 +24,11 @@ class TestServerController {
         case put = "PUT"
         case post = "POST"
         case delete = "DELETE"
+    }
+    
+    
+    init() {
+        parseRooms(fileName: "GeneratedRooms")
     }
 
     // MARK: - Registration
@@ -195,5 +201,27 @@ class TestServerController {
             }
         }.resume()
     }
+    
+    
+    
+    func parseRooms(fileName: String) {
+    
+        guard let path = Bundle.main.path(forResource: fileName, ofType: "json") else { return }
+        
+        let url = URL(fileURLWithPath: path)
+            
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let rooms = try JSONDecoder().decode([MappedRoom].self, from: data)
+            self.rooms = rooms
+        } catch {
+            NSLog("Error decoding rooms: \(error)")
+            return
+        }
+
+    }
+    
+    
     
 }
