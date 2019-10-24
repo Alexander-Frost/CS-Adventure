@@ -66,7 +66,7 @@ class MapView: UIView {
         let yfactor = frame.maxY / 17
         let seperator = frame.maxX / 20
         
-        print("Tunnelling: \(room1.id) -> \(room2.id)")
+        //print("Tunnelling: \(room1.id) -> \(room2.id)")
         
         let room1Rect = CGRect(x: CGFloat(room1.x)*xfactor, y: CGFloat(room1.y)*yfactor, width: seperator, height: seperator)
         

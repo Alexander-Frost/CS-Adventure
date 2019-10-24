@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     
+    var playerDot: UIView?
     var playerX = 8
     var playerY = 0
     
@@ -30,20 +31,20 @@ class MapViewController: UIViewController {
     // MARK: - Actions
     
     @objc func upBtnPressed(sender: UIButton){
-        movePlayer(direction: "n")
         print("Up button pressed")
+        movePlayer(direction: "n")
     }
     @objc func downBtnPressed(sender: UIButton){
-        movePlayer(direction: "s")
         print("Down button pressed")
+        movePlayer(direction: "s")
     }
     @objc func leftBtnPressed(sender: UIButton){
-        movePlayer(direction: "w")
         print("Left button pressed")
+        movePlayer(direction: "w")
     }
     @objc func rightBtnPressed(sender: UIButton){
-        movePlayer(direction: "e")
         print("Right button pressed")
+        movePlayer(direction: "e")
     }
     
     // MARK: - VC Lifecycle
@@ -110,8 +111,9 @@ class MapViewController: UIViewController {
         let seperator = mapView.frame.maxX / 22
         
         // Player Dot
-        var playerDot = UIView(frame: CGRect(x: xfactor * 8, y: yfactor * 0, width: seperator, height: seperator))
+        let playerDot = UIView(frame: CGRect(x: xfactor * 8, y: yfactor * 0, width: seperator, height: seperator))
         playerDot.makeDot()
+        self.playerDot = playerDot
         
         // Add Subviews
         mapView.addSubview(playerDot)
@@ -128,6 +130,7 @@ class MapViewController: UIViewController {
         
         guard let controller = controller else { return }
         guard let rooms = controller.rooms else { return }
+        guard let playerDot = playerDot else { return }
         let xfactor = mapView.frame.maxX / 16
         let yfactor = mapView.frame.maxY / 17
         
@@ -137,37 +140,56 @@ class MapViewController: UIViewController {
         case "n":
             for room in rooms {
                 if room.x == playerX && room.y == playerY+1 {
+                    print("Moving north")
                     playerX = room.x
                     playerY = room.y
+                    print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    return
                 }
             }
+            print("There is not a room to the North")
         case "e":
             for room in rooms {
                 if room.x == playerX+1 && room.y == playerY {
+                    print("Moving east")
                     playerX = room.x
                     playerY = room.y
+                    print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    return
                 }
             }
+            print("There is not a room to the East")
         case "s":
             for room in rooms {
                 if room.x == playerX && room.y == playerY-1 {
+                    print("Moving south")
                     playerX = room.x
                     playerY = room.y
+                    print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    return
                 }
             }
+            print("There is not a room to the South")
         case "w":
             for room in rooms {
                 if room.x == playerX-1 && room.y == playerY {
+                    print("Moving west")
                     playerX = room.x
                     playerY = room.y
+                    print("x: \(playerX) y: \(playerY)")
                     playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                    return
                 }
             }
+            print("There is not a room to the West")
         default:
             return
         }
+        
     }
+    
+    
 }
