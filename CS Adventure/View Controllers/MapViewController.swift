@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     
+    var playerDot = UIView(frame: CGRect(x: 8, y: 0, width: 10, height: 10))
     
     let upBtn = UIButton(type: .custom)
     let downBtn = UIButton(type: .custom)
@@ -28,7 +29,16 @@ class MapViewController: UIViewController {
     // MARK: - Actions
     
     @objc func upBtnPressed(sender: UIButton){
-        
+        print("Up button pressed")
+    }
+    @objc func downBtnPressed(sender: UIButton){
+        print("Down button pressed")
+    }
+    @objc func leftBtnPressed(sender: UIButton){
+        print("Left button pressed")
+    }
+    @objc func rightBtnPressed(sender: UIButton){
+        print("Right button pressed")
     }
     
     // MARK: - VC Lifecycle
@@ -70,19 +80,43 @@ class MapViewController: UIViewController {
 
     private func setupUI(){
         // Up button
-        upBtn.frame = CGRect(x: 100, y: 12, width: 29, height: 29)
-        upBtn.backgroundColor = .gray
+        upBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        upBtn.backgroundColor = .clear
         upBtn.setImage(UIImage(named:"upArrow"), for: .normal)
         upBtn.imageView?.contentMode = .scaleAspectFit
         upBtn.makeCircle()
-        upBtn.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         upBtn.addTarget(self, action: #selector(upBtnPressed(sender:)), for: .touchUpInside)
+
+        // Down button
+        downBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        downBtn.backgroundColor = .clear
+        downBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        downBtn.imageView?.contentMode = .scaleAspectFit
+        downBtn.makeCircle()
+        downBtn.addTarget(self, action: #selector(downBtnPressed(sender:)), for: .touchUpInside)
+        
+        // Left button
+        leftBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        leftBtn.backgroundColor = .clear
+        leftBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        leftBtn.imageView?.contentMode = .scaleAspectFit
+        leftBtn.makeCircle()
+        leftBtn.addTarget(self, action: #selector(leftBtnPressed(sender:)), for: .touchUpInside)
+        
+        // Right button
+        rightBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        rightBtn.backgroundColor = .clear
+        rightBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        rightBtn.imageView?.contentMode = .scaleAspectFit
+        rightBtn.makeCircle()
+        rightBtn.addTarget(self, action: #selector(rightBtnPressed(sender:)), for: .touchUpInside)
+        
+        // Player Dot
+        
+        playerDot.makeDot()
+        
+        // Add Subviews
+        mapView.addSubview(playerDot)
+        mapView.addSubview(upBtn)
     }
-    
-    
-
-    
-    
-
-
 }
