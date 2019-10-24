@@ -35,8 +35,7 @@ class TestServerController {
     
     func registerUser(username: String, password1: String, password2: String, completion: @escaping (Error?) -> Void) {
         
-        let requestURL = testServerURL
-            .appendingPathComponent("api")
+        let requestURL = testServerURL.appendingPathComponent("api")
             .appendingPathComponent("registration/")
         
         var request = URLRequest(url: requestURL)
@@ -49,22 +48,18 @@ class TestServerController {
             request.httpBody = try JSONEncoder().encode(newUser)
         } catch {
             NSLog("Error encoding user: \(error)")
-            completion(error)
-            return
+            return completion(error)
         }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
             if let error = error {
                 NSLog("Error registering user: \(error)")
-                completion(error)
-                return
+                return completion(error)
             }
             
             guard let data = data else {
                 NSLog("No data returned")
-                completion(nil)
-                return
+                return completion(nil)
             }
             
             do {
@@ -73,18 +68,14 @@ class TestServerController {
                 completion(nil)
             } catch {
                 NSLog("Error decoding key: \(error)")
-                completion(error)
-                return
+                return completion(error)
             }
-
-            
         }.resume()
     }
     
     func loginUser(username: String, password: String, completion: @escaping (Error?) -> Void) {
         
-        let requestURL = testServerURL
-            .appendingPathComponent("api")
+        let requestURL = testServerURL.appendingPathComponent("api")
             .appendingPathComponent("login")
         
         var request = URLRequest(url: requestURL)
@@ -201,7 +192,6 @@ class TestServerController {
             }
         }.resume()
     }
-    
     
     
     func parseRooms(fileName: String) {
