@@ -19,11 +19,6 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MapView!
     
-    var playerDot = UIView(frame: CGRect(x: 8, y: 0, width: 10, height: 10)) {
-        didSet {
-            playerDot.makeCircle()
-        }
-    }
     
     let upBtn = UIButton(type: .custom)
     let downBtn = UIButton(type: .custom)
@@ -45,6 +40,17 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.controller = controller
+        
+        let xfactor = mapView.frame.maxX / 16
+        let yfactor = mapView.frame.maxY / 17
+        
+        let seperator = mapView.frame.maxX / 22
+        
+        var playerDot = UIView(frame: CGRect(x: 8*(xfactor), y: 0*(yfactor), width: seperator, height: seperator)) {
+            didSet {
+                playerDot.makeCircle()
+            }
+        }
         
         playerDot.makeCircle()
         mapView.addSubview(playerDot)
