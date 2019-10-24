@@ -80,7 +80,7 @@ class MapViewController: UIViewController {
 
     private func setupUI(){
         // Up button
-        upBtn.frame = CGRect(x: 200, y: 500, width: 200, height: 200) //UIScreen.main.bounds.maxY
+        upBtn.frame = CGRect(x: mapView.frame.size.width - 80, y: mapView.frame.size.height - 80, width: 40, height: 40)
         upBtn.backgroundColor = .clear
         upBtn.setImage(UIImage(named:"upArrow"), for: .normal)
         upBtn.imageView?.contentMode = .scaleAspectFit
@@ -88,25 +88,25 @@ class MapViewController: UIViewController {
         upBtn.addTarget(self, action: #selector(upBtnPressed(sender:)), for: .touchUpInside)
 
         // Down button
-        downBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        downBtn.frame = CGRect(x: mapView.frame.size.width - 80, y: mapView.frame.size.height - 40, width: 40, height: 40)
         downBtn.backgroundColor = .clear
-        downBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        downBtn.setImage(UIImage(named:"downArrow"), for: .normal)
         downBtn.imageView?.contentMode = .scaleAspectFit
         downBtn.makeCircle()
         downBtn.addTarget(self, action: #selector(downBtnPressed(sender:)), for: .touchUpInside)
         
         // Left button
-        leftBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        leftBtn.frame = CGRect(x: mapView.frame.size.width - 120, y: mapView.frame.size.height - 60, width: 40, height: 40)
         leftBtn.backgroundColor = .clear
-        leftBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        leftBtn.setImage(UIImage(named:"leftArrow"), for: .normal)
         leftBtn.imageView?.contentMode = .scaleAspectFit
         leftBtn.makeCircle()
         leftBtn.addTarget(self, action: #selector(leftBtnPressed(sender:)), for: .touchUpInside)
         
         // Right button
-        rightBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        rightBtn.frame = CGRect(x: mapView.frame.size.width - 40, y: mapView.frame.size.height - 60, width: 40, height: 40)
         rightBtn.backgroundColor = .clear
-        rightBtn.setImage(UIImage(named:"upArrow"), for: .normal)
+        rightBtn.setImage(UIImage(named:"rightArrow"), for: .normal)
         rightBtn.imageView?.contentMode = .scaleAspectFit
         rightBtn.makeCircle()
         rightBtn.addTarget(self, action: #selector(rightBtnPressed(sender:)), for: .touchUpInside)
@@ -118,5 +118,9 @@ class MapViewController: UIViewController {
         // Add Subviews
         mapView.addSubview(playerDot)
         mapView.addSubview(upBtn)
+        mapView.addSubview(downBtn)
+        mapView.addSubview(leftBtn)
+        mapView.addSubview(rightBtn)
+
     }
 }
