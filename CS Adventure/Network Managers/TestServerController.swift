@@ -109,7 +109,6 @@ class TestServerController {
             cookieStore.deleteCookie(cookie)
         }
         
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {

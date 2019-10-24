@@ -42,10 +42,6 @@ class MapViewController: UIViewController {
     }
     
     // MARK: - VC Lifecycle
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +58,12 @@ class MapViewController: UIViewController {
             }
         }
         
-        playerDot.makeCircle()
-        mapView.addSubview(playerDot)
+        setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateViews()
     }
     
     private func updateViews(){
@@ -80,7 +80,7 @@ class MapViewController: UIViewController {
 
     private func setupUI(){
         // Up button
-        upBtn.frame = CGRect(x: 100, y: 300, width: 60, height: 60) //UIScreen.main.bounds.maxY
+        upBtn.frame = CGRect(x: 200, y: 500, width: 200, height: 200) //UIScreen.main.bounds.maxY
         upBtn.backgroundColor = .clear
         upBtn.setImage(UIImage(named:"upArrow"), for: .normal)
         upBtn.imageView?.contentMode = .scaleAspectFit
