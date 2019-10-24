@@ -89,13 +89,13 @@ class TestServerController {
     func loginUser(username: String, password: String, completion: @escaping (Error?) -> Void) {
         
         let requestURL = testServerURL.appendingPathComponent("api")
-            .appendingPathComponent("login")
+            .appendingPathComponent("login/")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let user = User(username: username, password1: password)
+        let user = UserLogin(username: username, password: password)
         
         do {
             request.httpBody = try JSONEncoder().encode(user)
@@ -103,6 +103,12 @@ class TestServerController {
             NSLog("Error encoding user: \(error)")
             return completion(error)
         }
+        
+        let cookieStore = HTTPCookieStorage.shared
+        for cookie in cookieStore.cookies ?? [] {
+            cookieStore.deleteCookie(cookie)
+        }
+        
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -115,7 +121,8 @@ class TestServerController {
                 NSLog("No data returned")
                 return completion(nil)
             }
-            
+            print("data:")
+            print(String(decoding: data, as: UTF8.self))
             do {
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.key = bearer.key

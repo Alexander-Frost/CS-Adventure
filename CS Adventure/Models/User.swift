@@ -15,3 +15,8 @@ struct User: Codable {
     var password2: String?
     
 }
+
+struct UserLogin: Codable {
+    let username: String
+    let password: String
+}
