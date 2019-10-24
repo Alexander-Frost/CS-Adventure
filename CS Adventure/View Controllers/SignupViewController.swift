@@ -10,6 +10,10 @@ import UIKit
 
 class SignupViewController: UIViewController {
 
+    // MARK: - Instances
+    
+    private let registrationController = TestServerController()
+
     // MARK: - Outlets
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -20,7 +24,12 @@ class SignupViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func signupBtnPressed(_ sender: UIButton) {
-    
+        guard let userName = usernameTextField.text else {return}
+        guard let pass1 = passwordTextField.text else {return}
+        guard let pass2 = confirmPasswordTextField.text else {return}
+        registrationController.registerUser(username: userName, password1: pass1, password2: pass2) { (err) in
+            if let err = err {return NSLog("Error registering user: ", err.localizedDescription)}
+        }
     }
     
     // MARK: - VC Lifecycle

@@ -10,6 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: - Instances
+    
+    private let registrationController = TestServerController()
+    
     // MARK: - Outlets
     
     @IBOutlet weak var userNameTextField: UITextField!
@@ -19,6 +23,12 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
+        guard let userName = userNameTextField.text else {return}
+        guard let pass = passwordTextField.text else {return}
+        
+        registrationController.loginUser(username: userName, password: pass) { (err) in
+            if let err = err {return NSLog("Error logging in: ", err.localizedDescription)}
+        }
     }
     
     // MARK: - VC Lifecycle
