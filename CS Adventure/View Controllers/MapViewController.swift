@@ -20,6 +20,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MapView!
     
     var playerDot = UIView(frame: CGRect(x: 8, y: 0, width: 10, height: 10))
+    var playerX = 8
+    var playerY = 0
     
     let upBtn = UIButton(type: .custom)
     let downBtn = UIButton(type: .custom)
@@ -29,15 +31,19 @@ class MapViewController: UIViewController {
     // MARK: - Actions
     
     @objc func upBtnPressed(sender: UIButton){
+        movePlayer(direction: "n")
         print("Up button pressed")
     }
     @objc func downBtnPressed(sender: UIButton){
+        movePlayer(direction: "s")
         print("Down button pressed")
     }
     @objc func leftBtnPressed(sender: UIButton){
+        movePlayer(direction: "w")
         print("Left button pressed")
     }
     @objc func rightBtnPressed(sender: UIButton){
+        movePlayer(direction: "e")
         print("Right button pressed")
     }
     
@@ -52,7 +58,7 @@ class MapViewController: UIViewController {
         
         let seperator = mapView.frame.maxX / 22
         
-        var playerDot = UIView(frame: CGRect(x: 8*(xfactor), y: 0*(yfactor), width: seperator, height: seperator)) {
+        var playerDot = UIView(frame: CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)) {
             didSet {
                 playerDot.makeCircle()
             }
@@ -122,5 +128,54 @@ class MapViewController: UIViewController {
         mapView.addSubview(leftBtn)
         mapView.addSubview(rightBtn)
 
+    }
+    
+    
+    
+    func movePlayer(direction: String) {
+        
+        guard let controller = controller else { return }
+        guard let rooms = controller.rooms else { return }
+        let xfactor = mapView.frame.maxX / 16
+        let yfactor = mapView.frame.maxY / 17
+        
+        let seperator = mapView.frame.maxX / 22
+        
+        switch direction {
+        case "n":
+            for room in rooms {
+                if room.x == playerX && room.y == playerY+1 {
+                    playerX = room.x
+                    playerY = room.y
+                    playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                }
+            }
+        case "e":
+            for room in rooms {
+                if room.x == playerX+1 && room.y == playerY {
+                    playerX = room.x
+                    playerY = room.y
+                    playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                }
+            }
+        case "s":
+            for room in rooms {
+                if room.x == playerX && room.y == playerY-1 {
+                    playerX = room.x
+                    playerY = room.y
+                    playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                }
+            }
+        case "w":
+            for room in rooms {
+                if room.x == playerX-1 && room.y == playerY {
+                    playerX = room.x
+                    playerY = room.y
+                    playerDot.frame = CGRect(x: CGFloat(playerX)*xfactor, y: CGFloat(playerY)*yfactor, width: seperator, height: seperator)
+                }
+            }
+        default:
+            return
+        }
     }
 }
